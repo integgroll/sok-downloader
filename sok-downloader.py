@@ -7,14 +7,12 @@ session_numbers = [5358,5256,5246,5403,5241,5385,5289,5222,5376,5339,5342,5392,5
 
 #Get the session information
 #https://www.sok-media.com/player?action=get_session_info&session_id=<X>
-#{"session_name":"Behind the Plexiglass Curtain: Stats and Stories from the Black Hat NOC","session_desc":"<p>","speakers":"<h1>Speakers<\/h1><h2>Bart Stump<\/h2>\n                      <p><\/p><h2>Neil Wyler<\/h2>\n                      <p><\/p>"}
 def get_session_information(session_number,cookie_info):
 	session_info = requests.get("https://www.sok-media.com/player?action=get_session_info&session_id="+str(session_number),cookies=cookie_info)
 	return session_info.json()
 
 #Put that information to use
 #https://www.sok-media.com/player?session_id=<X>&action=get_video
-#{"url":"https:\/\/sokstreamvideo.s3.amazonaws.com\/17_bhb_usa\/mp4\/db86d4adf26d1c626baa665177f63ec9.mp4?x-amz-security-token=FQoDYXdzEPT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDLzcZxYh0XKz41fz%2BiKUASt4VcBO9aLQ4bt0cCPyUtVdNDwAHn7EVGsn%2BHUK5RWOJ2pL%2BjzRU9YZjXJwByIwCaBAxww%2F5Fbm4nkYSPnfBiW9VYg%2FjcL%2BRwUQiw4MIUlrtYVc6J%2FAKOi5F6aaPc0sA9zKFjBTfwtQLG8BSmGjHJPVS6TILUe853Wef45NQ5QdTgG%2BpamANIn1PS7poHNI61exeIIo1qb3zAU%3D&AWSAccessKeyId=ASIAIYZWQBINR7XXNU6A&Expires=1503526278&Signature=svoraQ0Kr0k5dUmf0PbEulicV3o%3D","type":"video\/mp4","srt":""}
 def get_video_information(session_number,cookie_info):
 	video_information = requests.get("https://www.sok-media.com/player?session_id="+str(session_number)+"&action=get_video",cookies=cookie_info)	
 	return video_information.json()
